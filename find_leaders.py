@@ -25,13 +25,11 @@ def get_slot_leader(slot):
     slot_and_leaders[slot] = pubkey
 
 
-with open('data/filtered_sandwitches.json', 'r') as f:
-    d = orjson.loads(f.read())
+with open('data/filtered_sandwitches.json', 'r') as f: d = orjson.loads(f.read())
 
-with ThreadPoolExecutor(max_workers=600) as pool:
+with ThreadPoolExecutor(max_workers=900) as pool:
     for _ in pool.map(
         get_slot_leader, list(d)
-    ): pass
+    ): pass.
 
-with open('data/slot-leader.json', 'w') as f:
-    f.writelines(json.dumps(slot_and_leaders, indent=4))
+with open('data/slot-leader.json', 'w') as f: f.writelines(json.dumps(slot_and_leaders, indent=4))

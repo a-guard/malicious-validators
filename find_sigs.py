@@ -9,7 +9,7 @@ import os
 client = Client(os.getenv('RPC'))
 
 
-ACCOUNT_PUBKEY = Pubkey.from_string('9j7T2SrRyvPaP8MhyEwRD5UbRbaDae2aFx7bNTU6t4sL')
+ACCOUNT_PUBKEY = Pubkey.from_string('Ec9xymGeMuURLQfpMsMPkEwy5ktAiQSaFSjF5oJ3kERa')
 
 
 d = {}
@@ -18,6 +18,8 @@ s_l_js = orjson.loads(s_l.to_json())
 try:
     while len(s_l_js['result']) > 0:
         for s in s_l_js['result']:
+            if s['err'] is not None: continue
+                
             sig = s['signature']
             slot = s['slot']
             d[sig] = slot
