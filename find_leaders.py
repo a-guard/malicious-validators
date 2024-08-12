@@ -30,6 +30,6 @@ with open('data/filtered_sandwitches.json', 'r') as f: d = orjson.loads(f.read()
 with ThreadPoolExecutor(max_workers=900) as pool:
     for _ in pool.map(
         get_slot_leader, list(d)
-    ): pass.
+    ): pass
 
 with open('data/slot-leader.json', 'w') as f: f.writelines(json.dumps(slot_and_leaders, indent=4))
