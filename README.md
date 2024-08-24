@@ -1,3 +1,7 @@
+total 241 validators identity found with amount of stake 8_575_767 (SOL)
+156 validators with stake >15k
+144 validators with SFDP
+
 TL:DR on the methdology:
 1. [Collect all txns with a known sandwicher as the signer](https://github.com/a-guard/malicious-validators/blob/48ef59afa8fa3ec7e61c28cee9e41a489a984714/find_sigs.py#L12C38-L12C82) (Ec9xymGeMuURLQfpMsMPkEwy5ktAiQSaFSjF5oJ3kERa)
 2. [filter out txns that make a tip to any jito tip collector](https://github.com/a-guard/malicious-validators/blob/48ef59afa8fa3ec7e61c28cee9e41a489a984714/filter_sigs.py#L45C5-L51C39)
