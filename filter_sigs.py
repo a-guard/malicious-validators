@@ -9,7 +9,7 @@ import os
 
 RPC_URL: str = os.getenv('RPC')
 s = Session()
-s.headers.update({ 'Accept': 'application/json', 'Content-Type': 'application/json' })
+s.headers.update({'Accept': 'application/json', 'Content-Type': 'application/json'})
 
 jito_tip_accs = ['Cw8CFyM9FkoMi7K7Crf6HNQqf4uEMzpKw6QNghXLvLkY', 'ADaUMid9yfUytqMBgopwjb2DTLSokTSzL1zt6iGPaS49', '3AVi9Tg9Uo68tJfuvoKvqKNWKkC5wPdSSdeBnizKZ6jT', 'HFqU5x63VTqvQss8hp11i4wVV8bD44PvwucfZ2bU7gRe', 'DfXygSm4jCyNCybVYYK6DwvWqjKee8pbDmJGcLWNDXjh', 'ADuUkR4vqLUMWXxW9gh6D6L8pMSawimctcNZ5pGwDcEt', '96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5', 'DttWaMuVvTiduZRnguLF7jNxTgiMBZ1hyAumKUiL2KRL']
     
@@ -45,9 +45,19 @@ def filter_tx(sig, trys: int = 0):
     has_ray = False
     has_jito = False
     for acc in js['transaction']['message']['accountKeys']:
-        if acc == RAYDIUM_ACC: has_ray = True
-        if acc in jito_tip_accs: has_jito = True
-        if has_ray and has_jito: break
+        if acc == RAYDIUM_ACC: 
+            has_ray = True
+            break
+    
+    for i in range(len(js['meta']['preBalances'])):
+        if int(js['meta']['preBalances'][i]) < int(js['meta']['postBalances'][i]):
+            try:
+                # print('balance increased', js['transaction']['message']['accountKeys'][i])
+                if js['transaction']['message']['accountKeys'][i] in jito_tip_accs:
+                    has_jito = True
+                    break
+            except IndexError: return
+            
     if not has_ray or has_jito: return
     
     for pre_balance in js['meta']['preTokenBalances']:
@@ -77,7 +87,7 @@ sigs = []
 for (sign, slot) in d.items(): sigs.append(sign)
 
 try:
-    with ThreadPoolExecutor(max_workers=1500) as pool:
+    with ThreadPoolExecutor(max_workers=150) as pool:
         for _ in pool.map(
             # filter_tx, ['3YE8zQs1NFmUxhbFvEfPu6ZH1YXEFSRvDrjA4aZuFA2c1suSBr8gK1XBwwkJUT1A8MyFoDGBRTF6kFz1gN1JvWyo', '2FwnMsaaXkT7kG2JmSGLyEvYzTpMhJqknWe8kx7EK5jnf4obScbaZuk5c3f6inBQndjic1jwsWDCfup9DqWSRTXV']
             filter_tx, sigs

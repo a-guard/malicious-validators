@@ -9,7 +9,7 @@ import os
 client = Client(os.getenv('RPC'))
 
 
-ACCOUNT_PUBKEY = Pubkey.from_string('Ec9xymGeMuURLQfpMsMPkEwy5ktAiQSaFSjF5oJ3kERa')
+ACCOUNT_PUBKEY = Pubkey.from_string('DQ97nu7t7fbhAtZUyam8EzNsxUzw5bgEE5seBfevPwRK')
 
 
 d = {}
@@ -24,7 +24,7 @@ try:
             slot = s['slot']
             d[sig] = slot
             
-        print('lsig:', sig, 'slot:', slot, 'len:', len(d))
+        print('sig:', sig, 'slot:', slot, 'len:', len(d))
         s_l = client.get_signatures_for_address(ACCOUNT_PUBKEY, before=Signature.from_string(sig))
         s_l_js = orjson.loads(s_l.to_json())
 except: pass

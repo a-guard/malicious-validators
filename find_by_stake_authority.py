@@ -5,7 +5,8 @@ import time
 
 # https://docs.stakewiz.com/reference/api-reference/validators
 STAKE_WIZ_API: str = 'https://api.stakewiz.com/'
-STAKE_AUTH: str = '6iQKfEyhr3bZMotVkW6beNZz5CPAkiwvgV2CTje9pVSS'
+# STAKE_AUTH: str = '6iQKfEyhr3bZMotVkW6beNZz5CPAkiwvgV2CTje9pVSS' # jito stake auth
+STAKE_AUTH: str = 'mpa4abUkjQoAvPzREkh5Mo75hZhPFQ2FSH6w7dWKuQ5' # SFDP stake auth
 
 
 def check_stake_by_vote(vote_acc: str, stake_auth: str) -> float:
@@ -40,6 +41,7 @@ for (slot, sig) in d.items():
 
 resp = get(STAKE_WIZ_API + 'validators?sort=-activated_stake')
 js = orjson.loads(resp.text)
+# print(js)
 
 activated_stake = 0
 delegated_by_stake = 0
@@ -49,7 +51,7 @@ for v in js:
         stake = v['activated_stake']
         delegated = check_stake_by_vote(v['vote_identity'], STAKE_AUTH)
         # time.sleep(0.1) # to prevent rate limiting
-        if delegated < 1: continue
+        # if delegated < 1: continue
         sandwitches_n = count_sandwitches(v['identity'])
         sandwitches_total += sandwitches_n
         activated_stake += v['activated_stake']
