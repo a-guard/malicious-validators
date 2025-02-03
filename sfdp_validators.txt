@@ -1,6 +1,6 @@
 IDENTITY                                     VOTE                            SFDP_STAKE         TOTAL_SANDWICHES
 
-FBKFWadXZJahGtFitAsBvbqh5968gLY7dMBBJUoUjeNi AZoCYB4VgoM9DR9f1ZFcBn8xPSbtbqoxZnKJR7tkvEoX 0 1               # this validator mistakenly detected
+FBKFWadXZJahGtFitAsBvbqh5968gLY7dMBBJUoUjeNi AZoCYB4VgoM9DR9f1ZFcBn8xPSbtbqoxZnKJR7tkvEoX 0 1               # THIS VALIDATOR MISTEKENLY DETECTED ITS NOT MALICIOUS
 Frog1Fks1AVN8ywFH3HTFeYojq6LQqoEPzgQFx2Kz5Ch Pond1QyT1sQtiru3fi9G5LGaLRGeUpJKR1a2gdbq2u4 0 46902
 Fire6ZGPLaqBBGWXC8PgweVjREVXRhwzgRNkdGs1wfQM SmithX2hngQMZXVN36C6TsyjthTU3YnsALAs1MaDghV 0 22617
 CbyfiyQAy9pyWKrAv3KViqHgcDPQ9ECmYx3eaQoV5hBw HFLsfstZkJeWDgVEA5fmXeea876Ad9f1VxrbXk386bBY 114_767 830
