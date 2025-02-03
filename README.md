@@ -1,14 +1,7 @@
 # Malicious Validators Analysis
 
-## Overview
-
-	•	Total Validators Identified: 241
-	•	Total Amount of Stake: 8,575,767 SOL
-	•	Validators with Stake >15k: 156
-	•	Validators with SFDP: 144
-
 ## Methodology Summary
-1. [Collect all txns with a known sandwicher as the signer](https://github.com/a-guard/malicious-validators/blob/48ef59afa8fa3ec7e61c28cee9e41a489a984714/find_sigs.py#L12C38-L12C82) (Ec9xymGeMuURLQfpMsMPkEwy5ktAiQSaFSjF5oJ3kERa)
+1. [Collect all txns with a known sandwicher as the signer](https://github.com/a-guard/malicious-validators/blob/48ef59afa8fa3ec7e61c28cee9e41a489a984714/find_sigs.py#L12C38-L12C82) (DQ97nu7t7fbhAtZUyam8EzNsxUzw5bgEE5seBfevPwRK)
 2. [filter out txns that make a tip to any jito tip collector](https://github.com/a-guard/malicious-validators/blob/48ef59afa8fa3ec7e61c28cee9e41a489a984714/filter_sigs.py#L45C5-L51C39)
 3. [filter out txns that aren’t raydium trades](https://github.com/a-guard/malicious-validators/blob/48ef59afa8fa3ec7e61c28cee9e41a489a984714/filter_sigs.py#L45C5-L51C39)
 4. [group txns that are in the same slot and have a net positive post balance on the same trading pair](https://github.com/a-guard/malicious-validators/blob/48ef59afa8fa3ec7e61c28cee9e41a489a984714/filter_sigs.py#L63C2-L70C58)
